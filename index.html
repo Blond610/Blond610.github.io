@@ -33,21 +33,32 @@
             overflow-x: hidden;
         }
 
-        /* Particle canvas */
-        #particles {
+        /* Video background */
+        #bg-video {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
+            object-fit: cover;
             z-index: 0;
-            pointer-events: none;
+        }
+
+        /* Dark overlay */
+        .video-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.55);
+            z-index: 1;
         }
 
         /* Sections */
         section {
             position: relative;
-            z-index: 1;
+            z-index: 2;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -266,6 +277,12 @@
 
         .delay-1 { transition-delay: 0.2s; }
 
+        @media (max-width: 768px) {
+            #bg-video {
+                display: none;
+            }
+        }
+
         @media (max-width: 480px) {
             .social-row {
                 flex-direction: column;
@@ -274,7 +291,10 @@
     </style>
 </head>
 <body>
-    <canvas id="particles"></canvas>
+    <video id="bg-video" autoplay loop muted playsinline>
+        <source src="bg-video.mp4" type="video/mp4">
+    </video>
+    <div class="video-overlay"></div>
 
     <!-- HERO -->
     <section class="hero">
@@ -323,51 +343,6 @@
     </section>
 
     <script>
-        /* Particle canvas */
-        (function () {
-            var canvas = document.getElementById('particles');
-            var ctx = canvas.getContext('2d');
-            var particles = [];
-            var count = 50;
-
-            function resize() {
-                canvas.width = window.innerWidth;
-                canvas.height = window.innerHeight;
-            }
-            resize();
-            window.addEventListener('resize', resize);
-
-            for (var i = 0; i < count; i++) {
-                particles.push({
-                    x: Math.random() * canvas.width,
-                    y: Math.random() * canvas.height,
-                    r: 1 + Math.random() * 2,
-                    dx: (Math.random() - 0.5) * 0.4,
-                    dy: (Math.random() - 0.5) * 0.4,
-                    o: 0.1 + Math.random() * 0.3
-                });
-            }
-
-            function draw() {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-                for (var i = 0; i < particles.length; i++) {
-                    var p = particles[i];
-                    p.x += p.dx;
-                    p.y += p.dy;
-                    if (p.x < 0) p.x = canvas.width;
-                    if (p.x > canvas.width) p.x = 0;
-                    if (p.y < 0) p.y = canvas.height;
-                    if (p.y > canvas.height) p.y = 0;
-                    ctx.beginPath();
-                    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-                    ctx.fillStyle = 'rgba(255,255,255,' + p.o + ')';
-                    ctx.fill();
-                }
-                requestAnimationFrame(draw);
-            }
-            requestAnimationFrame(draw);
-        })();
-
         /* Scroll reveal with IntersectionObserver */
         (function () {
             var targets = document.querySelectorAll('.reveal-up, .reveal-left, .reveal-scale, .reveal-fade');
