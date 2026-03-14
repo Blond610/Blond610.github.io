@@ -57,8 +57,183 @@
             z-index: 1;
         }
 
-        /* Sections */
-        section {
+        /* ===== DAW HERO SECTION ===== */
+        .daw-hero {
+            position: relative;
+            z-index: 2;
+            height: 300vh;
+        }
+
+        .daw-sticky {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+        }
+
+        /* DAW Panel */
+        .daw-panel {
+            background: rgba(15, 15, 25, 0.85);
+            border: 1px solid rgba(108, 92, 231, 0.2);
+            border-radius: 16px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            max-width: 700px;
+            width: 100%;
+            padding: 24px;
+            transition: transform 0.1s ease-out, opacity 0.1s ease-out;
+            will-change: transform, opacity;
+        }
+
+        .daw-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid rgba(108, 92, 231, 0.15);
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .daw-title {
+            font-family: 'Urbanist', sans-serif;
+            font-weight: 800;
+            font-size: 0.95rem;
+            color: #F5F5F5;
+        }
+
+        .daw-title .accent {
+            color: #6C5CE7;
+        }
+
+        .daw-meta {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.72rem;
+            font-weight: 500;
+            color: #9381FF;
+            letter-spacing: 0.5px;
+        }
+
+        /* Stems */
+        .stem {
+            position: relative;
+            height: 48px;
+            width: 100%;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            padding: 0 16px;
+            transition: transform 0.1s ease-out, opacity 0.1s ease-out;
+            will-change: transform, opacity;
+            overflow: hidden;
+        }
+
+        .stem:last-child {
+            margin-bottom: 0;
+        }
+
+        .stem-drums {
+            background: rgba(108, 92, 231, 0.2);
+            border-left: 3px solid #6C5CE7;
+        }
+
+        .stem-bass {
+            background: rgba(61, 90, 128, 0.2);
+            border-left: 3px solid #3D5A80;
+        }
+
+        .stem-keys {
+            background: rgba(147, 129, 255, 0.2);
+            border-left: 3px solid #9381FF;
+        }
+
+        .stem-pad {
+            background: rgba(74, 63, 107, 0.2);
+            border-left: 3px solid #4A3F6B;
+        }
+
+        .stem-vocals {
+            background: rgba(139, 92, 246, 0.2);
+            border-left: 3px solid #8B5CF6;
+        }
+
+        .stem-name {
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 0.8rem;
+            color: #F5F5F5;
+            min-width: 60px;
+            z-index: 2;
+            white-space: nowrap;
+        }
+
+        .stem-waveform {
+            flex: 1;
+            height: 30px;
+            margin: 0 12px;
+            z-index: 1;
+        }
+
+        .stem-desc {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.65rem;
+            font-weight: 400;
+            color: #9381FF;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            white-space: nowrap;
+            z-index: 2;
+            position: absolute;
+            right: 16px;
+        }
+
+        /* Logo reveal (hidden initially) */
+        .logo-reveal {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            will-change: opacity;
+            pointer-events: none;
+        }
+
+        .logo-reveal .logo {
+            font-family: 'Urbanist', sans-serif;
+            font-weight: 800;
+            font-size: clamp(3rem, 8vw, 4rem);
+            color: #F5F5F5;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .logo-reveal .dot {
+            color: #6C5CE7;
+        }
+
+        .logo-reveal .tagline {
+            font-style: italic;
+            font-size: 1rem;
+            color: #9381FF;
+            margin-bottom: 4px;
+        }
+
+        .logo-reveal .subtitle {
+            font-size: 0.95rem;
+            font-weight: 400;
+            color: #F5F5F5;
+        }
+
+        /* ===== CONTENT SECTIONS ===== */
+        .content-section {
             position: relative;
             z-index: 2;
             display: flex;
@@ -71,72 +246,22 @@
             margin: 0 auto;
         }
 
-        /* HERO */
-        .hero {
-            min-height: 100vh;
-            padding-top: 0;
-            padding-bottom: 0;
+        .section-beats {
+            min-height: 80vh;
+            padding-top: 80px;
         }
 
-        .logo {
-            font-family: 'Urbanist', sans-serif;
-            font-weight: 800;
-            font-size: clamp(3rem, 8vw, 5rem);
-            letter-spacing: 1px;
-            margin-bottom: 12px;
-            opacity: 0;
-            animation: heroFadeIn 0.8s ease forwards;
+        .section-social {
+            min-height: 60vh;
         }
 
-        .logo .dot {
-            color: #6C5CE7;
+        .section-lead {
+            min-height: 60vh;
         }
 
-        @keyframes heroFadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .hero .subtitle {
-            font-size: 1rem;
-            font-weight: 400;
-            color: #F5F5F5;
-            margin-bottom: 6px;
-            opacity: 0;
-            animation: heroFadeIn 0.8s ease 0.2s forwards;
-        }
-
-        .hero .tagline {
-            font-style: italic;
-            font-size: 0.95rem;
-            color: #9381FF;
-            opacity: 0;
-            animation: heroFadeIn 0.8s ease 0.4s forwards;
-        }
-
-        .scroll-arrow {
-            position: absolute;
-            bottom: 40px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 4px;
-            animation: bounce 2s ease-in-out infinite;
-            opacity: 0.5;
-        }
-
-        .scroll-arrow span {
-            display: block;
-            width: 20px;
-            height: 20px;
-            border-right: 2px solid #9381FF;
-            border-bottom: 2px solid #9381FF;
-            transform: rotate(45deg);
-        }
-
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(12px); }
+        .section-footer {
+            min-height: 30vh;
+            padding-bottom: 40px;
         }
 
         /* Section titles */
@@ -200,7 +325,7 @@
         .link-btn-glow {
             padding: 24px 40px;
             border-radius: 20px;
-            font-size: 1.15rem;
+            font-size: 1.1rem;
             font-weight: 500;
             animation: glow 2s ease-in-out infinite;
         }
@@ -210,22 +335,7 @@
             50% { box-shadow: 0 0 40px rgba(108, 92, 231, 0.5); }
         }
 
-        /* Beats section */
-        .beats {
-            min-height: 60vh;
-        }
-
-        /* Social section */
-        .social {
-            min-height: 50vh;
-        }
-
-        /* Lead magnet */
-        .lead-magnet {
-            min-height: 50vh;
-        }
-
-        .lead-magnet .beat-title {
+        .beat-title {
             font-style: italic;
             font-size: 0.95rem;
             color: #9381FF;
@@ -233,20 +343,14 @@
             text-align: center;
         }
 
-        /* Contact + footer */
-        .contact-footer {
-            min-height: 40vh;
-            padding-bottom: 40px;
-        }
-
-        .footer {
+        .footer-text {
             font-size: 0.75rem;
             color: #666;
             margin-top: 48px;
             text-align: center;
         }
 
-        /* Scroll animations — hidden states */
+        /* ===== SCROLL REVEAL ANIMATIONS ===== */
         .reveal-up {
             opacity: 0;
             transform: translateY(60px);
@@ -270,7 +374,6 @@
             will-change: opacity;
         }
 
-        /* Visible state */
         .visible {
             opacity: 1;
             transform: none;
@@ -283,6 +386,25 @@
             .social-row {
                 flex-direction: column;
             }
+
+            .daw-panel {
+                padding: 16px;
+            }
+
+            .daw-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 4px;
+            }
+
+            .stem-desc {
+                font-size: 0.55rem;
+            }
+
+            .stem-name {
+                font-size: 0.7rem;
+                min-width: 48px;
+            }
         }
     </style>
 </head>
@@ -292,16 +414,77 @@
     </video>
     <div class="video-overlay"></div>
 
-    <!-- HERO -->
-    <section class="hero">
-        <div class="logo">Rn<span class="dot">·</span>Blue</div>
-        <p class="subtitle">Dark R&B Type Beats</p>
-        <p class="tagline">Room to breathe</p>
-        <div class="scroll-arrow"><span></span></div>
-    </section>
+    <!-- ===== DAW HERO ===== -->
+    <div class="daw-hero" id="dawHero">
+        <div class="daw-sticky">
+            <div class="daw-panel" id="dawPanel">
+                <div class="daw-header">
+                    <div class="daw-title">Rn<span class="accent">·</span>Blue <span style="font-weight:400;font-family:'Inter',sans-serif;font-size:0.8rem;color:#888;">&mdash; Project: Escape</span></div>
+                    <div class="daw-meta">BPM: 82 &nbsp;|&nbsp; Key: Dm &nbsp;|&nbsp; Dark R&amp;B</div>
+                </div>
 
-    <!-- BEATS -->
-    <section class="beats">
+                <!-- Stem 1: Drums -->
+                <div class="stem stem-drums" id="stem0">
+                    <span class="stem-name">Drums</span>
+                    <svg class="stem-waveform" viewBox="0 0 200 30" preserveAspectRatio="none">
+                        <polyline fill="none" stroke="#6C5CE7" stroke-opacity="0.6" stroke-width="1.5"
+                            points="0,15 4,8 8,20 12,5 16,25 20,10 24,18 28,6 32,22 36,12 40,15 44,7 48,24 52,11 56,19 60,4 64,26 68,14 72,9 76,21 80,13 84,17 88,6 92,23 96,10 100,15 104,8 108,22 112,12 116,18 120,5 124,25 128,14 132,9 136,20 140,11 144,16 148,7 152,24 156,13 160,19 164,6 168,22 172,15 176,10 180,18 184,8 188,21 192,12 196,15 200,15" />
+                    </svg>
+                    <span class="stem-desc">808 Sub + Trap Hi-hats | 82 BPM</span>
+                </div>
+
+                <!-- Stem 2: Bass -->
+                <div class="stem stem-bass" id="stem1">
+                    <span class="stem-name">Bass</span>
+                    <svg class="stem-waveform" viewBox="0 0 200 30" preserveAspectRatio="none">
+                        <polyline fill="none" stroke="#3D5A80" stroke-opacity="0.6" stroke-width="1.5"
+                            points="0,15 6,10 12,20 18,8 24,18 30,12 36,22 42,9 48,17 54,13 60,15 66,11 72,19 78,14 84,16 90,10 96,21 102,13 108,15 114,9 120,20 126,14 132,17 138,11 144,19 150,13 156,15 162,10 168,18 174,14 180,16 186,12 192,15 198,15" />
+                    </svg>
+                    <span class="stem-desc">Sub Bass | Root Dm, Sidechain -6dB</span>
+                </div>
+
+                <!-- Stem 3: Keys -->
+                <div class="stem stem-keys" id="stem2">
+                    <span class="stem-name">Keys</span>
+                    <svg class="stem-waveform" viewBox="0 0 200 30" preserveAspectRatio="none">
+                        <polyline fill="none" stroke="#9381FF" stroke-opacity="0.6" stroke-width="1.5"
+                            points="0,15 5,12 10,18 15,10 20,16 25,13 30,19 35,11 40,15 45,14 50,17 55,12 60,16 65,13 70,18 75,11 80,15 85,14 90,17 95,12 100,15 105,13 110,18 115,10 120,16 125,14 130,19 135,11 140,15 145,13 150,17 155,12 160,16 165,14 170,18 175,11 180,15 185,13 190,16 195,14 200,15" />
+                    </svg>
+                    <span class="stem-desc">Rhodes EP | Wet reverb 2.8s, Chorus</span>
+                </div>
+
+                <!-- Stem 4: Pad -->
+                <div class="stem stem-pad" id="stem3">
+                    <span class="stem-name">Pad</span>
+                    <svg class="stem-waveform" viewBox="0 0 200 30" preserveAspectRatio="none">
+                        <polyline fill="none" stroke="#4A3F6B" stroke-opacity="0.6" stroke-width="1.5"
+                            points="0,15 8,13 16,17 24,12 32,16 40,14 48,18 56,13 64,15 72,14 80,16 88,13 96,17 104,14 112,15 120,13 128,17 136,14 144,16 152,13 160,15 168,14 176,16 184,13 192,15 200,15" />
+                    </svg>
+                    <span class="stem-desc">Ambient Texture | Low-pass 800Hz, Stereo 120%</span>
+                </div>
+
+                <!-- Stem 5: Vocals -->
+                <div class="stem stem-vocals" id="stem4">
+                    <span class="stem-name">Vocals</span>
+                    <svg class="stem-waveform" viewBox="0 0 200 30" preserveAspectRatio="none">
+                        <polyline fill="none" stroke="#8B5CF6" stroke-opacity="0.6" stroke-width="1.5"
+                            points="0,15 5,11 10,19 15,8 20,22 25,12 30,17 35,9 40,20 45,14 50,15 55,10 60,18 65,13 70,16 75,9 80,21 85,14 90,17 95,11 100,15 105,12 110,19 115,10 120,16 125,13 130,18 135,11 140,15 145,14 150,17 155,10 160,19 165,13 170,16 175,12 180,18 185,14 190,15 195,13 200,15" />
+                    </svg>
+                    <span class="stem-desc">Vocal Chop | Pitched -5st, Delay 1/4</span>
+                </div>
+            </div>
+
+            <!-- Logo reveal -->
+            <div class="logo-reveal" id="logoReveal">
+                <div class="logo">Rn<span class="dot">·</span>Blue</div>
+                <p class="tagline">Room to breathe</p>
+                <p class="subtitle">Dark R&B Type Beats</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== BEATS ===== -->
+    <section class="content-section section-beats">
         <div class="reveal-up">
             <h2>Ascolta i beat</h2>
             <p class="section-sub">Produzioni Dark R&B disponibili per licensing</p>
@@ -309,8 +492,8 @@
         </div>
     </section>
 
-    <!-- SOCIAL -->
-    <section class="social">
+    <!-- ===== SOCIAL ===== -->
+    <section class="content-section section-social">
         <div class="reveal-up">
             <h2>Seguimi</h2>
             <p class="section-sub">&nbsp;</p>
@@ -321,25 +504,123 @@
         </div>
     </section>
 
-    <!-- LEAD MAGNET -->
-    <section class="lead-magnet">
+    <!-- ===== LEAD MAGNET ===== -->
+    <section class="content-section section-lead">
         <div class="reveal-scale" style="text-align:center;width:100%;">
             <h2>Beat gratuito</h2>
-            <p class="beat-title">"Escape" — Dark H.E.R. Type Beat 2026</p>
+            <p class="beat-title">"Escape" &mdash; Dark H.E.R. Type Beat 2026</p>
             <a href="https://bsta.rs/Mba1c" target="_blank" rel="noopener noreferrer" class="link-btn link-btn-glow">🎁 Scarica gratis</a>
         </div>
     </section>
 
-    <!-- CONTACT + FOOTER -->
-    <section class="contact-footer">
+    <!-- ===== FOOTER ===== -->
+    <section class="content-section section-footer">
         <div class="reveal-fade" style="width:100%;text-align:center;">
             <a href="mailto:claudioblond96@gmail.com" target="_blank" rel="noopener noreferrer" class="link-btn link-btn-compact">📩 Contattami</a>
-            <p class="footer">© 2026 RnBlue Beats · Room to breathe</p>
+            <p class="footer-text">&copy; 2026 RnBlue Beats &middot; Room to breathe</p>
         </div>
     </section>
 
     <script>
-        /* Scroll reveal with IntersectionObserver */
+        /* ===== DAW SCROLL ANIMATION ===== */
+        (function () {
+            var heroEl = document.getElementById('dawHero');
+            var panelEl = document.getElementById('dawPanel');
+            var logoEl = document.getElementById('logoReveal');
+            var stems = [
+                document.getElementById('stem0'),
+                document.getElementById('stem1'),
+                document.getElementById('stem2'),
+                document.getElementById('stem3'),
+                document.getElementById('stem4')
+            ];
+
+            /* Each stem: [startProgress, endProgress, translateX, translateY] */
+            var stemAnimations = [
+                [0.15, 0.30, -40, -15],
+                [0.30, 0.45,  40,  10],
+                [0.45, 0.60, -30, -10],
+                [0.60, 0.75,  35,  15],
+                [0.75, 0.85, -25,  20]
+            ];
+
+            function lerp(a, b, t) {
+                return a + (b - a) * Math.max(0, Math.min(1, t));
+            }
+
+            function onScroll() {
+                var rect = heroEl.getBoundingClientRect();
+                var heroHeight = heroEl.offsetHeight;
+                var scrolled = -rect.top;
+                var progress = Math.max(0, Math.min(1, scrolled / (heroHeight - window.innerHeight)));
+
+                /* Animate each stem */
+                for (var i = 0; i < stems.length; i++) {
+                    var anim = stemAnimations[i];
+                    var start = anim[0];
+                    var end = anim[1];
+                    var maxX = anim[2];
+                    var maxY = anim[3];
+                    var desc = stems[i].querySelector('.stem-desc');
+
+                    if (progress < 0.85) {
+                        /* Phase: explode out */
+                        var t = 0;
+                        if (progress >= start && progress <= end) {
+                            t = (progress - start) / (end - start);
+                        } else if (progress > end) {
+                            t = 1;
+                        }
+
+                        var tx = lerp(0, maxX, t);
+                        var ty = lerp(0, maxY, t);
+                        stems[i].style.transform = 'translateX(' + tx + 'px) translateY(' + ty + 'px)';
+
+                        if (desc) {
+                            desc.style.opacity = t;
+                        }
+                    } else {
+                        /* Phase: snap back (0.85 - 1.0) */
+                        var snapT = (progress - 0.85) / 0.15;
+                        var tx = lerp(maxX, 0, snapT);
+                        var ty = lerp(maxY, 0, snapT);
+                        stems[i].style.transform = 'translateX(' + tx + 'px) translateY(' + ty + 'px)';
+
+                        if (desc) {
+                            desc.style.opacity = lerp(1, 0, snapT);
+                        }
+                    }
+                }
+
+                /* DAW panel fade out + scale down, logo fade in */
+                if (progress >= 0.85) {
+                    var fadeT = (progress - 0.85) / 0.15;
+                    panelEl.style.transform = 'scale(' + lerp(1, 0.9, fadeT) + ')';
+                    panelEl.style.opacity = lerp(1, 0, fadeT);
+                    logoEl.style.opacity = fadeT;
+                } else {
+                    panelEl.style.transform = 'scale(1)';
+                    panelEl.style.opacity = 1;
+                    logoEl.style.opacity = 0;
+                }
+            }
+
+            var ticking = false;
+            window.addEventListener('scroll', function () {
+                if (!ticking) {
+                    requestAnimationFrame(function () {
+                        onScroll();
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            }, { passive: true });
+
+            /* Initial call */
+            onScroll();
+        })();
+
+        /* ===== INTERSECTION OBSERVER FOR CONTENT SECTIONS ===== */
         (function () {
             var targets = document.querySelectorAll('.reveal-up, .reveal-left, .reveal-scale, .reveal-fade');
             var observer = new IntersectionObserver(function (entries) {
